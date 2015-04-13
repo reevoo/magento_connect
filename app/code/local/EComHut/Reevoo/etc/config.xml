@@ -1,0 +1,289 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade reevoo to newer
+ * versions in the future. If you wish to customize the code for your
+ * needs please refer to https://github.com/reevoo/ for more information.
+ *
+ * @category    Reeovoo Magento Connect
+ * @package     Com_Reevoo
+ * @copyright   Copyright (c) 20015 Reevoo Limited. (www.reevoo.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * Reevoo Package Module.
+ *
+ * @category   Reeovoo Magento Connect
+ * @package    Com_Reevoo
+ * @author     Haroon Chaudhry<haroon.chaudhry@innovadeltech.com>
+ */
+-->
+<config>
+    <modules>
+        <EComHut_Reevoo>
+            <version>0.0.1.0</version>
+        </EComHut_Reevoo>
+    </modules>
+    <global>
+        <blocks>
+            <reevoo>
+                <class>EComHut_Reevoo_Block</class>
+            </reevoo>
+            <reevoo_standard>
+                <class>EComHut_Reevoo_Block</class>
+            </reevoo_standard>
+            <reevoo_customerexperience>
+                <class>EComHut_Reevoo_Block</class>
+            </reevoo_customerexperience>
+            <reevoo_overallserviceratingbadge>
+                <class>EComHut_Reevoo_Block</class>
+            </reevoo_overallserviceratingbadge>
+            <reevoo_customerserviceratingbadge>
+                <class>EComHut_Reevoo_Block</class>
+            </reevoo_customerserviceratingbadge>
+            <reevoo_deliveryratingbadge>
+                <class>EComHut_Reevoo_Block</class>
+            </reevoo_deliveryratingbadge>
+            <review>
+                <rewrite>
+                    <helper>EComHut_Reevoo_Block_Review</helper>
+                </rewrite>
+            </review>
+        </blocks>
+        <models>
+            <reevoo>
+                <class>EComHut_Reevoo_Model</class>
+                <!-- 
+                need to create our own resource, can't just use core_mysql4
+                -->
+                <resourceModel>revoo_mysql4</resourceModel>
+            </reevoo>
+            <revoo_mysql4>
+                <class>EComHut_Reevoo_Model_Mysql4</class>
+                <entities>
+                    <reevoo>
+                        <table>reevoo</table>
+                    </reevoo>
+                </entities>
+            </revoo_mysql4>
+        </models>
+        <helpers>
+            <reevoo>
+                <class>EComHut_Reevoo_Helper</class>
+            </reevoo>
+            <reevoo_customerexperience>
+                <class>EComHut_Reevoo_Helper</class>
+            </reevoo_customerexperience>
+            <reevoo_customerserviceratingbadge>
+                <class>EComHut_Reevoo_Helper</class>
+            </reevoo_customerserviceratingbadge>
+            <reevoo_customerexperience>
+                <class>EComHut_Reevoo_Helper</class>
+            </reevoo_customerexperience>
+            <reevoo_deliveryratingbadge>
+                <class>EComHut_Reevoo_Helper</class>
+            </reevoo_deliveryratingbadge>
+        </helpers>
+        <resources>
+            <reevoo_setup>
+                <setup>
+                    <module>EComHut_Reevoo</module>
+                    <class>EComHut_Reevoo_Model_Resource_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </reevoo_setup>
+            <reevoo_logs>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </reevoo_logs>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <reevoo>
+                <use>standard</use>
+                <args>
+                    <module>EComHut_Reevoo</module>
+                    <frontName>reevoo</frontName>
+                </args>
+            </reevoo>
+        </routers>
+        <layout>
+            <updates>
+                <reevoo>
+                    <file>reevoo.xml</file>
+                </reevoo>
+            </updates>
+        </layout>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <reevoo_tracking>
+                        <class>EComHut_Reevoo_Model_Observer</class>
+                        <method>setOrderTracking</method>
+                    </reevoo_tracking>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <reevoo_tracking>
+                        <class>EComHut_Reevoo_Model_Observer</class>
+                        <method>setOrderTracking</method>
+                    </reevoo_tracking>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <reevoo>
+                <use>admin</use>
+                <args>
+                    <module>EComHut_Reevoo</module>
+                    <frontName>reevoo</frontName>
+                </args>
+            </reevoo>
+            <reevoo_info>
+                <use>admin</use>
+                <args>
+                    <module>EComHut_Reevoo</module>
+                    <frontName>reevoo</frontName>
+                </args>
+            </reevoo_info>
+            <reevoo_setup>
+                <use>admin</use>
+                <args>
+                    <module>EComHut_Reevoo</module>
+                    <frontName>reevoo</frontName>
+                </args>
+            </reevoo_setup>
+        </routers>
+        <layout>
+            <updates>
+                <reevoo>
+                    <file>reevoo.xml</file>
+                </reevoo>
+            </updates>
+        </layout>
+    </admin>
+    <adminhtml>     
+        <translate>
+            <modules>
+                <EComHut_Reevoo>
+                    <files>
+                        <default>EComHut_Reevoo.csv</default>
+                    </files>
+                </EComHut_Reevoo>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <reevoo translate="title" module="reevoo">
+                                            <title>Reevoo</title>
+                                        </reevoo>
+                                        <reevoo_setup translate="title" module="reevoo">
+                                            <title>Setup</title>
+                                        </reevoo_setup>
+                                        <reevoo_info translate="title" module="reevoo">
+                                            <title>Info</title>
+                                        </reevoo_info>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <reevoo>
+                    <file>reevoo.xml</file>
+                </reevoo>
+            </updates>
+        </layout>
+    </adminhtml>
+    <crontab>
+        <jobs>
+            <reevoo_productfeed_cron>
+                <!--
+                    We Don't need to hardcode cron_expr as we are doing this using dynamic way
+                <schedule>
+                    <cron_expr>0 1 * * *</cron_expr>
+                </schedule>
+                -->
+                <run>
+                    <model>reevoo/cron::processProductsFeed</model>
+                </run>
+            </reevoo_productfeed_cron>
+            <reevoo_purchaserfeed_cron>
+                <!--
+                    We Don't need to hardcode cron_expr as we are doing this using dynamic way
+                <schedule>
+                    <cron_expr>0 1 * * *</cron_expr>
+                </schedule>
+                -->
+                <run>
+                    <model>reevoo/cron::processPurchaserFeed</model>
+                </run>
+            </reevoo_purchaserfeed_cron>
+        </jobs>
+    </crontab>
+    <default>
+        <!-- default values of the cronjob -->
+        <crontab>            
+            <jobs>
+                <reevoo_productfeed>
+                    <schedule>
+                        <cron_expr>0 0 * * *</cron_expr>
+                    </schedule>
+                </reevoo_productfeed>
+                <reevoo_purchaserfeed>
+                    <schedule>
+                        <cron_expr>0 0 * * *</cron_expr>
+                    </schedule>
+                </reevoo_purchaserfeed>
+            </jobs>
+        </crontab>
+        <!-- default values for reevoo when its installed. -->
+        <reevoo_setup>
+            <reevoo_status>
+                <status>1</status>
+                <embedded_reviews>1</embedded_reviews>
+                <default_sku>sku</default_sku>
+                <locale>en_GB</locale>
+                <badges>product_badge,owner_badge</badges>
+                <badges_location>listing_pages,product_pages</badges_location>
+                <embedded_reviews_pagination>1</embedded_reviews_pagination>
+                <product_list_varient_for_badge>stars_only</product_list_varient_for_badge>
+                <product_varient_for_badge>stars_only</product_varient_for_badge>
+                <askanhonor_list_varient_for_badge>stars_only</askanhonor_list_varient_for_badge>
+                <askanhonor_varient_for_badge>stars_only</askanhonor_varient_for_badge>
+                <embedded_reviews_count>6</embedded_reviews_count>
+            </reevoo_status>
+            <reevoo_ftp>
+                <ftp_path>/upload/reevoo/</ftp_path>
+                <productfeed_delta>1</productfeed_delta>
+                <purchasefeed_delta>1</purchasefeed_delta>
+                <productfeed_defaultimage>image</productfeed_defaultimage>
+            </reevoo_ftp>
+            <reevoo_tracking>
+                <tracking_status>1</tracking_status>
+                <tracking_purchase>1</tracking_purchase>
+                <tracking_propensity>0</tracking_propensity>
+            </reevoo_tracking>
+        </reevoo_setup>
+    </default>
+</config>

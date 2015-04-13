@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade reevoo to newer
+ * versions in the future. If you wish to customize the code for your
+ * needs please refer to https://github.com/reevoo/ for more information.
+ *
+ * @category    Reeovoo Magento Connect
+ * @package     Com_Reevoo
+ * @copyright   Copyright (c) 20015 Reevoo Limited. (www.reevoo.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * Reevoo Package Module.
+ *
+ * @category   Reeovoo Magento Connect
+ * @package    Com_Reevoo
+ * @author     Haroon Chaudhry<haroon.chaudhry@innovadeltech.com>
+ */
+-->
+<config>
+    <tabs>
+        <eComHut translate="label" module="reevoo">
+            <label>Reevoo Configurations</label>
+            <sort_order>12</sort_order>
+        </eComHut>
+    </tabs>
+    <sections>
+        <reevoo_setup translate="label" module="reevoo">
+            <label>Reevoo Configurations</label>
+            <tab>eComHut</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <reevoo_status translate="label" module="reevoo">
+                    <label>Badges Configurations</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <status translate="label">
+                            <label>Reevoo Extension Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </status>
+                        <tracking_reference translate="label, comment">
+                            <label>Reevoo Tracking Reference</label>
+                            <comment><![CDATA[Enter tracking reference from Reevoo.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>54</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </tracking_reference>
+                        <embedded_reviews translate="label, comment">
+                            <label>Product Embedded Reviews</label>
+                            <comment><![CDATA[Enable/Disable Product Embedded Reviews]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </embedded_reviews>
+                        <embedded_reviews_pagination translate="label, comment">
+                            <label>Product Embedded Reviews Pagination</label>
+                            <comment><![CDATA[Enable/Disable Pagination on Product Embedded Reviews]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>56</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                                <embedded_reviews>1</embedded_reviews>
+                            </depends>
+                        </embedded_reviews_pagination>
+                        <embedded_reviews_count translate="label, comment">
+                            <label>Number of Embedded Reviews</label>
+                            <comment><![CDATA[Enter Number of embedded reviews to be shown on embedded reviews page.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>57</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                                <embedded_reviews>1</embedded_reviews>
+                            </depends>
+                        </embedded_reviews_count>
+                        <default_sku translate="label, comment">
+                            <label>Default Product SKU</label>
+                            <comment><![CDATA[Select product attribute used as a Sku for ratings/reviews used by Reevoo.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reevoo/adminhtml_system_config_source_dropdown_textattributeslist</source_model>
+                            <sort_order>58</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </default_sku>
+                        <locale translate="label, comment">
+                            <label>Reevoo Locale</label>
+                            <comment><![CDATA[Select site locale.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_locale</source_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </locale>
+                        <badges translate="label, comment">
+                            <label>Product/Conversation Badges</label>
+                            <comment><![CDATA[Select/Deselect to show/hide Product/Conversation badges. The selected will be displayed on pages chosen in Product/Conversation Badges Visibility. Tip: Ctrl + Click to multi-select values.]]></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>reevoo/adminhtml_system_config_source_dropdown_badges</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </badges>
+                        <badges_location translate="label, comment">
+                            <label>Product/Conversation Badges Visibility</label>
+                            <comment><![CDATA[Select/Deselect to choose the visibility of Product/Conversation badges on the listed pages. Tip: Click+Ctrl to multi-select values.]]></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>reevoo/adminhtml_system_config_source_dropdown_badgeslocation</source_model>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </badges_location>
+                        <product_list_varient_for_badge translate="label, comment">
+                            <label>Product Badges Variant (Category Listing Page)</label>
+                            <comment><![CDATA[Enter varient name for Product Badge. It only applies to category listing page.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </product_list_varient_for_badge>
+                        <product_varient_for_badge translate="label, comment">
+                            <label>Product Badges Variant (Product Page)</label>
+                            <comment><![CDATA[Enter varient name for Product Badge. It only applies to Product Page...]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>63</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </product_varient_for_badge>
+                        <askanhonor_list_varient_for_badge translate="label, comment">
+                            <label>Conversation Badge Variant (Category Listing Page)</label>
+                            <comment><![CDATA[Enter variant name for Conversation (Ask an Owner) Badge. It only applies to category listing page.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>64</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </askanhonor_list_varient_for_badge>
+                        <askanhonor_varient_for_badge translate="label, comment">
+                            <label>Conversation Badge Variant (Product Page)</label>
+                            <comment><![CDATA[Enter variant name for Conversation (Ask an Owner) Badge. It only applies to product page.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </askanhonor_varient_for_badge>
+                    </fields>
+                </reevoo_status>
+                <reevoo_ftp translate="label" module="reevoo">
+                    <label>Feeds Configuration</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <ftp_status translate="label, comment">
+                            <label>FTP Status</label>
+                            <comment><![CDATA[Reevoo Status in Basic Configurations should be enabled as a precondition otherwise enabling this will have no impact.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_status>
+                        <ftp_type translate="label, comment">
+                            <label>FTP Mode</label>
+                            <comment><![CDATA[Select mode]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reevoo/adminhtml_system_config_source_dropdown_values</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <ftp_status>1</ftp_status>
+                            </depends>
+                        </ftp_type>
+                        <ftp_host translate="label, comment">
+                            <label>FTP Host</label>
+                            <comment><![CDATA[Either IP or domain address.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <ftp_status>1</ftp_status>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </ftp_host>
+                        <ftp_port translate="label, comment">
+                            <label>FTP Port</label>
+                            <comment><![CDATA[Port on server. If empty than default values for Passive/Active is 21 and for SFTP its 22.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <ftp_status>1</ftp_status>
+                            </depends>
+                        </ftp_port>
+                        <ftp_user translate="label, comment">
+                            <label>FTP Username</label>
+                            <comment><![CDATA[Username for FTP.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <ftp_status>1</ftp_status>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </ftp_user>
+                        <ftp_pass translate="label, comment">
+                            <label>FTP Password</label>
+                            <comment><![CDATA[Password for FTP.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <ftp_status>1</ftp_status>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </ftp_pass>
+                        <ftp_path translate="label, comment">
+                            <label>FTP Path</label>
+                            <comment><![CDATA[Path for FTP.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <ftp_status>1</ftp_status>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </ftp_path>
+                        <productfeed_delta translate="label, comment">
+                            <label>Product Feed Delta</label>
+                            <comment><![CDATA[Export reevoo product field by delta.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeed_delta>
+                        <purchasefeed_delta translate="label, comment">
+                            <label>Purchase Feed Delta</label>
+                            <comment><![CDATA[Export reevoo purchase field by delta.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </purchasefeed_delta>
+                        <productfeed_defaultimage translate="label, comment">
+                            <label>Default Product Image</label>
+                            <comment><![CDATA[Select default product image to be exported in Product Feed.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reevoo/adminhtml_system_config_source_dropdown_attributeslist</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </productfeed_defaultimage>
+                        <run_prfeed translate="label">
+                            <label>Generate Product Feed</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>reevoo/productfeedbtn</frontend_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </run_prfeed>
+                        <run translate="label">
+                            <label>Generate Purchase Feed</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>reevoo/purchasefeedbtn</frontend_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </run>
+                    </fields>
+                </reevoo_ftp>
+                <reevoo_tracking translate="label" module="reevoo">
+                    <label>Tracking Configurations</label>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <tracking_status translate="label, comment">
+                            <label>Tracking Status</label>
+                            <comment><![CDATA[Reevoo Status in Basic Configurations should be enabled as a precondition otherwise enabling this will have no impact.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tracking_status>
+                        <tracking_purchase translate="label, comment">
+                            <label>Purchase Tracking</label>
+                            <comment><![CDATA[Choose to track the purchases on the order confirmation page.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <tracking_status>1</tracking_status>
+                            </depends>
+                        </tracking_purchase>
+                        <tracking_propensity translate="label, comment">
+                            <label>Propensity Tracking</label>
+                            <comment><![CDATA[To track the possible purchases for the merchants that do not offer online sales on their site thus enabling this will let them to include this tracking on any page on their site.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <tracking_status>1</tracking_status>
+                            </depends>
+                        </tracking_propensity>
+                    </fields>
+                </reevoo_tracking>
+                
+                
+            </groups>
+        </reevoo_setup>
+        <reevoo translate="label" module="reevoo">
+            <label>Reevoo Cronjob Configurations</label>
+            <tab>eComHut</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>509</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <reevoo_productfeed translate="label" module="reevoo">
+                    <label>Product Feed Cronjob</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <status translate="label, comment">
+                            <label>Status</label>
+                            <comment><![CDATA[Reevoo Status in Basic Configurations should be enabled as a precondition otherwise enabling this will have no impact.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </status>
+                        <!-- Cron job time -->
+                        <time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </time>
+                        <!--other fields here-->
+                        <frequency translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cron_frequency</source_model>
+                            <!-- Custom backend model which saves cron configuration -->
+                            <backend_model>reevoo/adminhtml_system_config_backend_product_cron</backend_model>
+                            <sort_order>201</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Job Frequency.</comment>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </frequency>
+                    </fields>
+                </reevoo_productfeed>
+                <reevoo_purchaserfeed translate="label" module="reevoo">
+                    <label>Purchaser Feed Cronjob</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <status translate="label, comment">
+                            <label>Status</label>
+                            <comment><![CDATA[Reevoo Status in Basic Configurations should be enabled as a precondition otherwise enabling this will have no impact.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </status>
+                        <time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </time>
+                        <!--other fields here-->
+                        <frequency translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cron_frequency</source_model>
+                            <!-- Custom backend model which saves cron configuration -->
+                            <backend_model>reevoo/adminhtml_system_config_backend_purchaser_cron</backend_model>
+                            <sort_order>201</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Job Frequency.</comment>
+                            <depends>
+                                <status>1</status>
+                            </depends>
+                        </frequency>
+                        <!-- Cron job time -->
+                    </fields>
+                </reevoo_purchaserfeed>
+            </groups>
+        </reevoo>
+        <reevoo_info translate="label" module="reevoo">
+            <label>About Author</label>
+            <tab>eComHut</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>510</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <info translate="label">
+                    <label>Author Info</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>reevoo/info</frontend_model>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>                    
+                </info>
+            </groups>
+        </reevoo_info>
+    </sections>
+</config>

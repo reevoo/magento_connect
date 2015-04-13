@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade reevoo to newer
+ * versions in the future. If you wish to customize the code for your
+ * needs please refer to https://github.com/reevoo/ for more information.
+ *
+ * @category    Reeovoo Magento Connect
+ * @package     Com_Reevoo
+ * @copyright   Copyright (c) 20015 Reevoo Limited. (www.reevoo.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * Reevoo Package Module.
+ *
+ * @category   Reeovoo Magento Connect
+ * @package    Com_Reevoo
+ * @author     Haroon Chaudhry<haroon.chaudhry@innovadeltech.com>
+ */
+-->
+<widgets>
+    <reevoo_customerexperience type="reevoo_customerexperience/widget_customerexperience" translate="label description" module="reevoo">
+        <name>Reevoo Customer Experience Reviews</name>
+        <description>The customer experience reviews will be included in the page.</description>
+        <parameters>
+            <numberofreviews>
+                <label>Number Of Reviews To Show</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>15</sort_order>
+                <value>6</value>
+            </numberofreviews>
+            <pagination>
+                <label>Display Pagination</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>select</type>
+                <sort_order>16</sort_order>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+            </pagination>
+            <template>  
+                <visible>0</visible>  
+                <value>reevoo/widgets/customerexperience/block.phtml</value>  
+            </template> 
+        </parameters>
+    </reevoo_customerexperience>
+    <reevoo_overallserviceratingbadge type="reevoo_overallserviceratingbadge/widget_overallserviceratingbadge" translate="label description" module="reevoo">
+        <name>Reevoo Overall Service Rating Badge</name>
+        <description>The overall service rating badge will be included in the page.</description>
+        <parameters>
+            <variant>
+                <label>Variant Name</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>17</sort_order>
+                <value>stars_only</value>
+            </variant>
+            <template>  
+                <value>reevoo/widgets/servicerating/block.phtml</value>  
+            </template> 
+        </parameters>
+    </reevoo_overallserviceratingbadge>
+    <reevoo_customerserviceratingbadge type="reevoo_customerserviceratingbadge/widget_overallserviceratingbadge" translate="label description" module="reevoo">
+        <name>Reevoo Customer Service Rating Badge</name>
+        <description>The customer service rating badge will be included in the page.</description>
+        <parameters>
+            <variant>
+                <label>Variant Name</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>17</sort_order>
+                <value>stars_only</value>
+            </variant>
+            <template>  
+                <value>reevoo/widgets/customerserviceratingbadge/block.phtml</value>  
+            </template> 
+        </parameters>
+    </reevoo_customerserviceratingbadge>
+    <reevoo_deliveryratingbadge type="reevoo_deliveryratingbadge/widget_overallserviceratingbadge" translate="label description" module="reevoo">
+        <name>Reevoo Delivery Rating Badge</name>
+        <description>The delivery rating badge will be included in the page.</description>
+        <parameters>
+            <variant>
+                <label>Variant Name</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>17</sort_order>
+                <value>stars_only</value>
+            </variant>
+            <template>  
+                <value>reevoo/widgets/deliveryratingbadge/block.phtml</value>  
+            </template> 
+        </parameters>
+    </reevoo_deliveryratingbadge>
+    <reevoo_standard type="reevoo_standard/widget_standard" translate="label description" module="reevoo">
+        <name>Reevoo Propensity Tracking</name>
+        <description>Propensity Tracking.</description>
+        <parameters>
+            <message>
+                <label>Message</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>15</sort_order>
+                <value>Your Message To be Sent With Tracking...!</value>
+            </message>
+            <template>  
+                <visible>0</visible>  
+                <value>reevoo/widgets/tracking/propensity.phtml</value>  
+            </template> 
+        </parameters>
+    </reevoo_standard>
+</widgets>

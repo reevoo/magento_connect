@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade reevoo to newer
+ * versions in the future. If you wish to customize the code for your
+ * needs please refer to https://github.com/reevoo/ for more information.
+ *
+ * @category    Reeovoo Magento Connect
+ * @package     Com_Reevoo
+ * @copyright   Copyright (c) 20015 Reevoo Limited. (www.reevoo.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * Reevoo Package Module.
+ *
+ * @category   Reeovoo Magento Connect
+ * @package    Com_Reevoo
+ * @author     Haroon Chaudhry<haroon.chaudhry@innovadeltech.com>
+ */
+    -->
+    <default>
+        <reference name="head" before="-">
+            <action method="setCacheLifetime">
+                <s>null</s>
+            </action>
+            <block type="reevoo/tracking" name="reevoo_header_elements" as="reevoo_header_elements" template="reevoo/html/head.phtml" />
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="reevoo_footer_elements" template="reevoo/html/footer.phtml"/>
+        </reference>
+    </default>
+    <review_product_list>
+        <remove name="reevoo_customer_experience_list" /> <!-- As we don't need the experience list seperately on our review page. -->
+        <reference name="product.info.product_additional_data">
+            <action method="setTemplate" ifconfig="reevoo_setup/reevoo_status/embedded_reviews">
+                <template>reevoo/review_list.phtml</template>
+            </action>
+        </reference>
+    </review_product_list>
+
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="setTemplate">
+                <template>reevoo/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="setTemplate">
+                <template>reevoo/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+    <!-- Categories/ Search Results and Also for products block -->
+    <!--<catalog_category_default>
+        <reference name="content">
+            <block type="core/template" name="reevoo_customer_experience_list" after="product_list" template="reevoo/catalog/customer_experience_list.phtml"/>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="content">
+            <block type="core/template" name="reevoo_customer_experience_list" after="product_list" template="reevoo/catalog/customer_experience_list.phtml"/>
+        </reference>
+    </catalog_category_layered>
+    <catalog_product_view>-->
+    <!--<reference name="content">
+        <block type="core/template" name="reevoo_customer_experience_list" after="-" template="reevoo/catalog/customer_experience.phtml"/>
+    </reference>-->
+    <catalog_product_view>
+        <!--<reference name="head">
+            <block type="reevoo/tracking" name="reevoo_propensitytracking" after="-" template="reevoo/tracking/propensity.phtml" />
+        </reference>-->
+        <reference name="product.reviews">
+            <action method="setTemplate" ifconfig="reevoo_setup/reevoo_status/embedded_reviews">
+                <template>reevoo/review_list.phtml</template>
+            </action>
+        </reference>
+    </catalog_product_view>
+    
+
+</layout>

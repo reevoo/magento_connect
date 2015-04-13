@@ -1,0 +1,13 @@
+<?php
+
+$_helper = $this->helper('reevoo/tracking');
+if ($_helper->getStatus('tracking_propensity')) {
+    $tempProduct = Mage::getModel('catalog/product')
+            ->load(Mage::app()->getRequest()->getParam('id'));
+    $sku = $tempProduct->getSku();
+    if (!empty($sku)) {
+        $this->_getPropensityTracking($sku);
+    } else {
+        $this->_getPropensityTracking(FALSE);   // This is to add backward compatibility with extra uses of this piece of block.
+    }
+}
