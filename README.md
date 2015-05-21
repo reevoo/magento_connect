@@ -1,11 +1,5 @@
 # Reevoo Magento Connect Project
 
-## Module Project Status
-
-Waiting for testing and quality assurance.
-
----
-
 ### Important Notes
 
 1. **Requirements:** Magento Community 1.6.xx up-to 1.9.xx, Magento Enterprises (1.13.xx to 1.14.xx).
