@@ -23,10 +23,9 @@ if ($_reevoo->getStatus()) {
     $sku = $this->getProduct()->getResource()->getAttribute($_reevoo->getValue('default_sku'))->getFrontend()->getValue($this->getProduct());
     $reevooMark = $_reevoo->getReevooApi();
     $reevooMark->cssAssets();
-    $reevooMark->javascriptAssets();
     $status = (boolean) Mage::getStoreConfig('reevoo_setup/reevoo_status/embedded_reviews_pagination') ? true : false;
     $pages = (int) Mage::getStoreConfig('reevoo_setup/reevoo_status/embedded_reviews_count');
-    
+
 ?>
     <div class="reevoo_customer_product_reviews">
         <?php $reevooMark->productReviews(array("sku" => $sku, "numberOfReviews" => $pages , 'paginated' => $status, "locale" => str_replace('_', '-', $_reevoo->getValue('locale')))); ?>

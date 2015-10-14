@@ -110,16 +110,15 @@ $_reevoo = Mage::helper('reevoo/api');
             </div>
 
             <?php echo $this->getChildHtml('related_products') ?>
-<?php 
+<?php
 if ($_reevoo->getStatus()):
     $sku = $this->getProduct()->getResource()->getAttribute($_reevoo->getValue('default_sku'))->getFrontend()->getValue($this->getProduct());
     $reevooMark = $_reevoo->getReevooApi();
     $reevooMark->cssAssets();
-    $reevooMark->javascriptAssets();
     $product_bage = $_reevoo->getMultiSelectValue('badges', 'reevoo_setup/reevoo_status/', 'product_badge');
     $owner_bage = $_reevoo->getMultiSelectValue('badges', 'reevoo_setup/reevoo_status/', 'owner_badge');
     $page_allowed = $_reevoo->getMultiSelectValue('badges_location', 'reevoo_setup/reevoo_status/', 'product_pages');
-    
+
     $varientMessageProductBadge = $_reevoo->getValue('product_varient_for_badge','reevoo_setup/reevoo_status/');
     $varientMessageConversationBadge = $_reevoo->getValue('askanhonor_varient_for_badge','reevoo_setup/reevoo_status/');
 ?>
