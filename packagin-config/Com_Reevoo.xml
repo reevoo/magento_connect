@@ -1,5 +1,5 @@
 <_>
-   <form_key>x1H3Zz9oiDlEKkRS</form_key>
+   <form_key>pO6COqlxEY52kH1d</form_key>
    <name>Com_Reevoo</name>
    <channel>community</channel>
    <version_ids>
@@ -9,7 +9,7 @@
    <description>Module for Reevoo Configuration</description>
    <license>Open Software License (OSL)</license>
    <license_uri>http://opensource.org/licenses/osl-3.0.php</license_uri>
-   <version>0.1.0</version>
+   <version>0.1.1</version>
    <stability>stable</stability>
    <notes>This extension is a package for reevoo configuration on Magento platform.</notes>
    <authors>
@@ -44,8 +44,8 @@
             <max>1.9.5</max>
          </max>
          <files>
-            <files>               </files>
-            <files>               </files>
+            <files>                  </files>
+            <files>                  </files>
          </files>
       </package>
       <extension>
